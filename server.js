@@ -18,7 +18,10 @@ connectDB();
 const app = express();
 
 //Middleware
-const allowedOrigins = "*";
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://mcq-frontend-bice.vercel.app/",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
