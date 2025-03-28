@@ -18,30 +18,7 @@ connectDB();
 const app = express();
 
 //Middleware
-const allowedOrigins = "https://mcq-frontend-bice.vercel.app";
-
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("Origin attempting to access:", origin); // Debugging log
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "Access-Control-Allow-Headers",
-    "Access-Control-Allow-Origin",
-  ],
-  credentials: true,
-  optionsSuccessStatus: 200,
-  preflightContinue: false,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
