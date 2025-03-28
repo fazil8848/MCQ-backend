@@ -23,7 +23,7 @@ console.log("Using CORS Allowed Origin:", `"${url}"`);
 
 app.use(
   cors({
-    origin: url, // ✅ Now it won't include trailing spaces/commas
+    origin: "https://mcq-frontend-bice.vercel.app", // ✅ Now it won't include trailing spaces/commas
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     credentials: true,
   })
