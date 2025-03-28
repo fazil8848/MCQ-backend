@@ -18,7 +18,7 @@ connectDB();
 const app = express();
 
 //Middleware
-const allowedOrigins = "https://mcq-frontend-bice.vercel.app/";
+const allowedOrigins = "https://mcq-frontend-bice.vercel.app";
 
 const corsOptions = {
   origin: function (origin, callback) {
