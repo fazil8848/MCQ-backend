@@ -18,7 +18,7 @@ connectDB();
 const app = express();
 
 //Middleware
-app.use(cors());
+app.use(cors({ origin: "https://mcq-frontend-bice.vercel.app/" }));
 
 app.use(express.json());
 
