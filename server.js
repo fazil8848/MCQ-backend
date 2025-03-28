@@ -18,11 +18,7 @@ connectDB();
 const app = express();
 
 //Middleware
-const url =
-  process.env.NODE_ENV === "production"
-    ? process.env.PRODUCTION_URL?.trim()
-    : process.env.DEVELOPMENT_URL?.trim(); // ✅ Trim whitespace & commas
-
+const url = process.env.CLIENT_URL?.trim();
 
 app.use(
   cors({
