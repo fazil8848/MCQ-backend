@@ -18,7 +18,8 @@ connectDB();
 const app = express();
 
 //Middleware
-const url = process.env.CLIENT_URL?.trim();
+const url = process.env.DEVELOPMENT_URL?.trim();
+console.log("Using CORS Allowed Origin:", `"${url}"`);
 
 app.use(
   cors({
