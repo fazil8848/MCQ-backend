@@ -18,7 +18,7 @@ connectDB();
 const app = express();
 
 //Middleware
-const url = "https://mcq-backend-nine.vercel.app";
+const url = "https://mcq-frontend-bice.vercel.app";
 console.log("Using CORS Allowed Origin:", `"${url}"`);
 
 app.use(
