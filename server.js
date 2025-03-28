@@ -18,13 +18,20 @@ connectDB();
 const app = express();
 
 //Middleware
+const url =
+  process.env.NODE_ENV === "production"
+    ? process.env.PRODUCTION_URL?.trim()
+    : process.env.DEVELOPMENT_URL?.trim(); // ✅ Trim whitespace & commas
+
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: url, // ✅ Now it won't include trailing spaces/commas
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 //Setting Routes
