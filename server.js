@@ -18,12 +18,14 @@ connectDB();
 const app = express();
 
 //Middleware
-const url = "https://mcq-frontend-bice.vercel.app";
-console.log("Using CORS Allowed Origin:", `"${url}"`);
+const allowedOrigins = [
+  "http://localhost:5173", // ✅ Local development
+  "https://mcq-frontend-bice.vercel.app", // ✅ Deployed frontend
+];
 
 app.use(
   cors({
-    origin: url, // ✅ Now it won't include trailing spaces/commas
+    origin: allowedOrigins, // ✅ Allow multiple origins
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
     credentials: true,
   })
