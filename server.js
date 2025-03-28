@@ -19,17 +19,25 @@ const app = express();
 
 //Middleware
 const allowedOrigins = [
-  "http://localhost:5173", // ✅ Local development
-  "https://mcq-frontend-bice.vercel.app", // ✅ Deployed frontend
+  "http://localhost:5173",
+  "https://mcq-frontend-bice.vercel.app",
 ];
 
-app.use(
-  cors({
-    origin: allowedOrigins, // ✅ Allow multiple origins
-    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
